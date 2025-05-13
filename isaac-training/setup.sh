@@ -35,6 +35,16 @@ pip install pyyaml
 pip install rospkg
 pip install matplotlib
 
+# Fix dependency conflicts
+pip install --user "usd-core>=21.11,<24.00" tqdm>=4.63.0 \
+    contourpy>=1.0.1 fonttools>=4.22.0 \
+    cloudpickle>=1.2.0 farama-notifications>=0.0.1 jax-jumpy>=1.0.0 \
+    typing-extensions>=4.3.0
+
+# Downgrade numpy for numba compatibility
+pip uninstall -y numpy
+pip install --user "numpy<1.25"
+
 # Step 2: Install dependencies
 echo "Installing system dependencies..."
 sudo apt update && sudo apt install -y cmake build-essential
